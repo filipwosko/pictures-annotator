@@ -1,7 +1,7 @@
-package com.example.pictures_annotator.repository.inmemory;
+package com.example.pictures_annotator.infrastructure.inmemory;
 
-import com.example.pictures_annotator.model.Picture;
-import com.example.pictures_annotator.repository.PictureRepository;
+import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.repository.PictureRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

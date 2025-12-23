@@ -1,7 +1,7 @@
-package com.example.pictures_annotator.repository.inmemory;
+package com.example.pictures_annotator.infrastructure.inmemory;
 
-import com.example.pictures_annotator.model.BoundingBox;
-import com.example.pictures_annotator.repository.BoundingBoxRepository;
+import com.example.pictures_annotator.domain.model.BoundingBox;
+import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -35,6 +35,11 @@ public class InMemoryBoundingBoxRepository implements BoundingBoxRepository {
         }
 
         storage.put(id, boundingBox);
+    }
+
+    @Override
+    public boolean existsById(Integer id){
+        return storage.get(id) != null;
     }
 
     @Override

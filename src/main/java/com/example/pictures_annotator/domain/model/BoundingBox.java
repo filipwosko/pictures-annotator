@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.model;
+package com.example.pictures_annotator.domain.model;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

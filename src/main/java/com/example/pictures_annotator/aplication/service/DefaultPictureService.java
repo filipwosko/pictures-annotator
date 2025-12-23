@@ -1,17 +1,18 @@
-package com.example.pictures_annotator.service;
+package com.example.pictures_annotator.aplication.service;
 
-import com.example.pictures_annotator.model.Picture;
-import com.example.pictures_annotator.repository.PictureRepository;
+import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
+import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.repository.PictureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PictureService {
+public class DefaultPictureService implements PictureService{
 
     private final PictureRepository pictureRepository;
 
-    public PictureService(PictureRepository pictureRepository) {
+    public DefaultPictureService(PictureRepository pictureRepository) {
         this.pictureRepository = pictureRepository;
     }
 
@@ -25,6 +26,6 @@ public class PictureService {
 
     public Picture getPictureById(Integer id) {
         return pictureRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Picture not found: " + id));
+                .orElseThrow(() -> new PictureNotFoundException(id));
     }
 }
