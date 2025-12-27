@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.boundingBox.commands.delete;
+package com.example.pictures_annotator.application.boundingBox.commands.delete;
 
 import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
 import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;

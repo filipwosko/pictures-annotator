@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.service;
+package com.example.pictures_annotator.application.service;
 
 import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
 import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
@@ -6,7 +6,7 @@ import com.example.pictures_annotator.domain.model.BoundingBox;
 import com.example.pictures_annotator.domain.model.Picture;
 import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
 import com.example.pictures_annotator.domain.repository.PictureRepository;
-import com.example.pictures_annotator.aplication.validation.BoundingBoxValidator;
+import com.example.pictures_annotator.application.validation.BoundingBoxValidator;
 import org.springframework.stereotype.Service;
 
 @Service

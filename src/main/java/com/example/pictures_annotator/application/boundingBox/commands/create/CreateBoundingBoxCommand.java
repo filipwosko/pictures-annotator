@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.boundingBox.commands.create;
+package com.example.pictures_annotator.application.boundingBox.commands.create;
 
 public record CreateBoundingBoxCommand(
         Integer pictureId,

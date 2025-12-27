@@ -1,7 +1,7 @@
-package com.example.pictures_annotator.aplication.boundingBox.commands.modify;
+package com.example.pictures_annotator.application.boundingBox.commands.modify;
 
-import com.example.pictures_annotator.aplication.mapper.BoundingBoxMapper;
-import com.example.pictures_annotator.aplication.validation.BoundingBoxValidator;
+import com.example.pictures_annotator.application.mapper.BoundingBoxMapper;
+import com.example.pictures_annotator.application.validation.BoundingBoxValidator;
 import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
 import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
 import com.example.pictures_annotator.domain.model.BoundingBox;
@@ -24,7 +24,7 @@ public class ModifyBoundingBoxHandler {
         this.boundingBoxMapper = boundingBoxMapper;
     }
 
-    public Integer handle(ModifyBoundingBoxCommand command) {
+    public void handle(ModifyBoundingBoxCommand command) {
         if (!boundingBoxRepository.existsById(command.id())){
             throw new BoundingBoxNotFoundException(command.id());
         }
@@ -35,6 +35,6 @@ public class ModifyBoundingBoxHandler {
         BoundingBox boundingBox = boundingBoxMapper.mapModifyBoundingBoxCommandToBoundingBox(command);
 
         validator.validate(boundingBox, picture);
-        return boundingBoxRepository.save(boundingBox).getId();
+        boundingBoxRepository.save(boundingBox).getId();
     }
 }

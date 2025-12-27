@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.boundingBox.commands.modify;
+package com.example.pictures_annotator.application.boundingBox.commands.modify;
 
 public record ModifyBoundingBoxCommand(
     Integer id,

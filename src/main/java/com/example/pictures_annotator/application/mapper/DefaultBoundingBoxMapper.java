@@ -1,7 +1,7 @@
-package com.example.pictures_annotator.aplication.mapper;
+package com.example.pictures_annotator.application.mapper;
 
-import com.example.pictures_annotator.aplication.boundingBox.commands.create.CreateBoundingBoxCommand;
-import com.example.pictures_annotator.aplication.boundingBox.commands.modify.ModifyBoundingBoxCommand;
+import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxCommand;
+import com.example.pictures_annotator.application.boundingBox.commands.modify.ModifyBoundingBoxCommand;
 import com.example.pictures_annotator.domain.model.BoundingBox;
 import org.springframework.stereotype.Component;
 

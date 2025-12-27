@@ -1,6 +1,7 @@
-package com.example.pictures_annotator.aplication.service;
+package com.example.pictures_annotator.application.service;
 
-import com.example.pictures_annotator.aplication.validation.BoundingBoxValidator;
+import com.example.pictures_annotator.application.service.DefaultBoundingBoxService;
+import com.example.pictures_annotator.application.validation.BoundingBoxValidator;
 import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
 import com.example.pictures_annotator.domain.model.BoundingBox;
 import com.example.pictures_annotator.domain.model.Picture;

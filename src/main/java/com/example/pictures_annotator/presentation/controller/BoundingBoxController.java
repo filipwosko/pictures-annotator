@@ -1,12 +1,11 @@
 package com.example.pictures_annotator.presentation.controller;
 
-import com.example.pictures_annotator.aplication.boundingBox.commands.create.CreateBoundingBoxCommand;
-import com.example.pictures_annotator.aplication.boundingBox.commands.create.CreateBoundingBoxHandler;
-import com.example.pictures_annotator.aplication.boundingBox.commands.delete.DeleteBoundingBoxCommand;
-import com.example.pictures_annotator.aplication.boundingBox.commands.delete.DeleteBoundingBoxHandler;
-import com.example.pictures_annotator.aplication.boundingBox.commands.modify.ModifyBoundingBoxCommand;
-import com.example.pictures_annotator.aplication.boundingBox.commands.modify.ModifyBoundingBoxHandler;
-import com.example.pictures_annotator.aplication.service.BoundingBoxService;
+import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxCommand;
+import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxHandler;
+import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxCommand;
+import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxHandler;
+import com.example.pictures_annotator.application.boundingBox.commands.modify.ModifyBoundingBoxCommand;
+import com.example.pictures_annotator.application.boundingBox.commands.modify.ModifyBoundingBoxHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

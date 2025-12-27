@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.validation;
+package com.example.pictures_annotator.application.validation;
 
 import com.example.pictures_annotator.domain.exception.BoundingBoxOutOfImageException;
 import com.example.pictures_annotator.domain.model.BoundingBox;

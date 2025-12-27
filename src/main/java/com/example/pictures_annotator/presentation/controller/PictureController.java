@@ -1,7 +1,7 @@
 package com.example.pictures_annotator.presentation.controller;
 
 import com.example.pictures_annotator.domain.model.Picture;
-import com.example.pictures_annotator.aplication.service.PictureService;
+import com.example.pictures_annotator.application.service.PictureService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

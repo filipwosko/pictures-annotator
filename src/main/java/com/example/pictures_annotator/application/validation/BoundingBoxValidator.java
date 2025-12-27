@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.aplication.validation;
+package com.example.pictures_annotator.application.validation;
 
 import com.example.pictures_annotator.domain.model.BoundingBox;
 import com.example.pictures_annotator.domain.model.Picture;
