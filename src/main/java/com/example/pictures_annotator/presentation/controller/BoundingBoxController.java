@@ -1,6 +1,11 @@
 package com.example.pictures_annotator.presentation.controller;
 
-import com.example.pictures_annotator.domain.model.BoundingBox;
+import com.example.pictures_annotator.aplication.boundingBox.commands.create.CreateBoundingBoxCommand;
+import com.example.pictures_annotator.aplication.boundingBox.commands.create.CreateBoundingBoxHandler;
+import com.example.pictures_annotator.aplication.boundingBox.commands.delete.DeleteBoundingBoxCommand;
+import com.example.pictures_annotator.aplication.boundingBox.commands.delete.DeleteBoundingBoxHandler;
+import com.example.pictures_annotator.aplication.boundingBox.commands.modify.ModifyBoundingBoxCommand;
+import com.example.pictures_annotator.aplication.boundingBox.commands.modify.ModifyBoundingBoxHandler;
 import com.example.pictures_annotator.aplication.service.BoundingBoxService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -11,10 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/bounding-boxes")
 public class BoundingBoxController {
 
-    private final BoundingBoxService boundingBoxService;
+    private final CreateBoundingBoxHandler createBoundingBoxHandler;
+    private final ModifyBoundingBoxHandler modifyBoundingBoxHandler;
+    private final DeleteBoundingBoxHandler deleteBoundingBoxHandler;
 
-    public BoundingBoxController(BoundingBoxService BoundingBoxService) {
-        this.boundingBoxService = BoundingBoxService;
+    public BoundingBoxController(CreateBoundingBoxHandler createBoundingBoxHandler, ModifyBoundingBoxHandler modifyBoundingBoxHandler, DeleteBoundingBoxHandler deleteBoundingBoxHandler) {
+        this.createBoundingBoxHandler = createBoundingBoxHandler;
+        this.modifyBoundingBoxHandler = modifyBoundingBoxHandler;
+        this.deleteBoundingBoxHandler = deleteBoundingBoxHandler;
     }
 
     @Operation(
@@ -22,9 +31,8 @@ public class BoundingBoxController {
             operationId = "createBoundingBox"
     )
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody BoundingBox BoundingBox) {
-        boundingBoxService.createBoundingBox(BoundingBox);
-
+    public ResponseEntity<Void> create(@RequestBody CreateBoundingBoxCommand command) {
+        createBoundingBoxHandler.handle(command);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -33,9 +41,8 @@ public class BoundingBoxController {
             operationId = "modifyBoundingBox"
     )
     @PutMapping
-    public ResponseEntity<Void> modify(@RequestBody BoundingBox BoundingBox) {
-        boundingBoxService.modifyBoundingBox(BoundingBox);
-
+    public ResponseEntity<Void> modify(@RequestBody ModifyBoundingBoxCommand command) {
+        modifyBoundingBoxHandler.handle(command);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -45,8 +52,8 @@ public class BoundingBoxController {
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        boundingBoxService.deleteBoundingBox(id);
-
+        DeleteBoundingBoxCommand command = new DeleteBoundingBoxCommand(id);
+        deleteBoundingBoxHandler.handle(command);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

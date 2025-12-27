@@ -7,7 +7,6 @@ import com.example.pictures_annotator.domain.model.Picture;
 import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
 import com.example.pictures_annotator.domain.repository.PictureRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,99 +20,92 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultBoundingBoxServiceTest {
+    @InjectMocks private DefaultBoundingBoxService sut;
 
-    @Mock
-    private BoundingBoxRepository boundingBoxRepository;
+    @Mock private BoundingBoxRepository boundingBoxRepository;
+    @Mock private PictureRepository pictureRepository;
+    @Mock private BoundingBoxValidator validator;
 
-    @Mock
-    private PictureRepository pictureRepository;
-
-    @Mock
-    private BoundingBoxValidator validator;
-
-    @InjectMocks
-    private DefaultBoundingBoxService service;
-
-    private BoundingBox sampleBox;
-    private Picture samplePicture;
+    private BoundingBox boundingBox;
+    private Picture picture;
+    private Integer pictureId;
+    private Integer boundingBoxId;
 
     @BeforeEach
     void setUp() {
-        sampleBox = new BoundingBox();
-        sampleBox.setId(1);
-        sampleBox.setPictureId(100);
+        pictureId = 321;
+        boundingBoxId = 456;
 
-        samplePicture = new Picture();
-        samplePicture.setId(100);
+        boundingBox = new BoundingBox();
+        boundingBox.setId(boundingBoxId);
+        boundingBox.setPictureId(pictureId);
+
+        picture = new Picture();
+        picture.setId(pictureId);
     }
 
     @Test
-    @DisplayName("Powinien poprawnie stworzyć BoundingBox")
-    void createBoundingBox_Success() {
-        // given
-        when(pictureRepository.findById(100)).thenReturn(Optional.of(samplePicture));
-        when(boundingBoxRepository.save(sampleBox)).thenReturn(sampleBox);
+    void createBoundingBox_shouldCreateWithSuccess_whenValidData() {
+        // Arrange
+        when(pictureRepository.findById(pictureId)).thenReturn(Optional.of(picture));
+        when(boundingBoxRepository.save(boundingBox)).thenReturn(boundingBox);
 
-        // when
-        BoundingBox result = service.createBoundingBox(sampleBox);
+        // Act
+        BoundingBox result = sut.createBoundingBox(boundingBox);
 
-        // then
+        // Assert
         assertNotNull(result);
-        verify(validator).validate(sampleBox, samplePicture);
-        verify(boundingBoxRepository).save(sampleBox);
+        verify(validator).validate(boundingBox, picture);
+        verify(boundingBoxRepository).save(boundingBox);
     }
 
     @Test
-    @DisplayName("Powinien rzucić wyjątek przy tworzeniu, gdy obraz nie istnieje")
-    void createBoundingBox_PictureNotFound() {
-        // given
-        when(pictureRepository.findById(100)).thenReturn(Optional.empty());
+    void createBoundingBox_shouldThrowPictureNotFound_whenPictureDoesntExist() {
+        // Arrange
+        when(pictureRepository.findById(pictureId)).thenReturn(Optional.empty());
 
-        // when & then
+        // Act & Assert
         PictureNotFoundException exception = assertThrows(PictureNotFoundException.class,
-                () -> service.createBoundingBox(sampleBox));
+                () -> sut.createBoundingBox(boundingBox));
 
-        assertTrue(exception.getMessage().contains("Nie odnaleziono obrazu o id: " + 100));
+        assertTrue(exception.getMessage().contains("Nie odnaleziono obrazu o id: " + pictureId));
         verifyNoInteractions(validator);
         verify(boundingBoxRepository, never()).save(any());
     }
 
     @Test
-    @DisplayName("Powinien poprawnie zmodyfikować BoundingBox")
-    void modifyBoundingBox_Success() {
-        // given
-        when(boundingBoxRepository.existsById(1)).thenReturn(true);
-        when(pictureRepository.findById(100)).thenReturn(Optional.of(samplePicture));
+    void modifyBoundingBox_shouldModifyWithSuccess_whenValidData() {
+        // Arrange
+        when(boundingBoxRepository.existsById(boundingBoxId)).thenReturn(true);
+        when(pictureRepository.findById(pictureId)).thenReturn(Optional.of(picture));
 
-        // when
-        service.modifyBoundingBox(sampleBox);
+        // Act
+        sut.modifyBoundingBox(boundingBox);
 
-        // then
-        verify(validator).validate(sampleBox, samplePicture);
-        verify(boundingBoxRepository).modify(sampleBox);
+        // Assert
+        verify(validator).validate(boundingBox, picture);
+        verify(boundingBoxRepository).modify(boundingBox);
     }
 
     @Test
-    @DisplayName("Powinien rzucić wyjątek przy modyfikacji, gdy boks nie istnieje")
-    void modifyBoundingBox_BoxNotFound() {
-        // given
-        when(boundingBoxRepository.existsById(1)).thenReturn(false);
+    void modifyBoundingBox_shouldThrowBoxNotFound_whenPictureDoesntExist() {
+        // Arrange
+        when(boundingBoxRepository.existsById(boundingBoxId)).thenReturn(false);
 
-        // when & then
-        assertThrows(RuntimeException.class, () -> service.modifyBoundingBox(sampleBox));
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> sut.modifyBoundingBox(boundingBox));
         verify(boundingBoxRepository, never()).modify(any());
     }
 
     @Test
-    @DisplayName("Powinien poprawnie usunąć BoundingBox")
-    void deleteBoundingBox_Success() {
-        // given
-        Integer idToDelete = 1;
+    void deleteBoundingBox_shouldDeleteBoxWithSuccess() {
+        // Arrange
+        Integer idToDelete = boundingBoxId;
 
-        // when
-        service.deleteBoundingBox(idToDelete);
+        // Act
+        sut.deleteBoundingBox(idToDelete);
 
-        // then
+        // Assert
         verify(boundingBoxRepository).deleteById(idToDelete);
     }
 }
