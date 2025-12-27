@@ -1,7 +1,7 @@
 package com.example.pictures_annotator.application.boundingBox.commands.create;
 
-import com.example.pictures_annotator.application.mapper.BoundingBoxMapper;
-import com.example.pictures_annotator.application.validation.BoundingBoxValidator;
+import com.example.pictures_annotator.application.boundingBox.BoundingBoxMapper;
+import com.example.pictures_annotator.application.boundingBox.BoundingBoxValidator;
 import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
 import com.example.pictures_annotator.domain.model.BoundingBox;
 import com.example.pictures_annotator.domain.model.Picture;
@@ -27,7 +27,7 @@ public class CreateBoundingBoxHandler {
         Picture picture = pictureRepository.findById(command.pictureId())
                 .orElseThrow(() -> new PictureNotFoundException(command.pictureId()));
 
-        BoundingBox boundingBox = boundingBoxMapper.mapCreateBoundingBoxCommandToBoundingBox(command);
+        BoundingBox boundingBox = boundingBoxMapper.map(command);
 
         validator.validate(boundingBox, picture);
         boundingBoxRepository.save(boundingBox).getId();

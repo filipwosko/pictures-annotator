@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.application.boundingBox.commands.delete;
+package com.example.pictures_annotator.application.boundingBox.delete;
 
 import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxCommand;
 import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxHandler;
@@ -49,10 +49,7 @@ class DeleteBoundingBoxHandlerTests {
         BoundingBoxNotFoundException exception = assertThrows(BoundingBoxNotFoundException.class,
                 () -> sut.handle(command));
 
-        // Sprawdzenie komunikatu (zakładając, że masz podobny wzorzec jak w PictureNotFoundException)
         assertTrue(exception.getMessage().contains(String.valueOf(boxId)));
-
-        // Upewniamy się, że metoda delete nigdy nie została wywołana
         verify(boundingBoxRepository, never()).deleteById(any());
     }
 }

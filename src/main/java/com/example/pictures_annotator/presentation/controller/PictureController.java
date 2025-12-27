@@ -1,7 +1,13 @@
 package com.example.pictures_annotator.presentation.controller;
 
+import com.example.pictures_annotator.application.picture.commands.create.CreatePictureCommand;
+import com.example.pictures_annotator.application.picture.commands.create.CreatePictureHandler;
+import com.example.pictures_annotator.application.picture.queries.getAll.GetAllPicturesQuery;
+import com.example.pictures_annotator.application.picture.queries.getAll.GetAllPicturesHandler;
+import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdHandler;
+import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdQuery;
+import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdResponse;
 import com.example.pictures_annotator.domain.model.Picture;
-import com.example.pictures_annotator.application.service.PictureService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +19,15 @@ import java.util.List;
 @RequestMapping("/api/pictures")
 public class PictureController {
 
-    private final PictureService pictureService;
+    private final CreatePictureHandler createPictureHandler;
+    private final GetAllPicturesHandler getAllPicturesHandler;
+    private final GetPictureByIdHandler getPictureByIdHandler;
 
-    public PictureController(PictureService pictureService) {
-        this.pictureService = pictureService;
+
+    public PictureController(GetAllPicturesHandler getAllPicturesQuery, CreatePictureHandler createPictureHandler, GetPictureByIdHandler getPictureByIdHandler) {
+        this.getAllPicturesHandler = getAllPicturesQuery;
+        this.createPictureHandler = createPictureHandler;
+        this.getPictureByIdHandler = getPictureByIdHandler;
     }
 
     @Operation(
@@ -24,9 +35,8 @@ public class PictureController {
             operationId = "createPicture"
     )
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody Picture picture) {
-        pictureService.createPicture(picture);
-
+    public ResponseEntity<Void> create(@RequestBody CreatePictureCommand command) {
+        createPictureHandler.handle(command);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -36,9 +46,10 @@ public class PictureController {
     )
     @GetMapping
     public ResponseEntity<List<Picture>> getAll() {
-        List<Picture> body = pictureService.listPictures();
+        GetAllPicturesQuery query = new GetAllPicturesQuery();
+        List<Picture> pictures = getAllPicturesHandler.handle(query);
 
-        return new ResponseEntity<>(body, HttpStatus.OK);
+        return new ResponseEntity<>(pictures, HttpStatus.OK);
     }
 
     @Operation(
@@ -46,8 +57,9 @@ public class PictureController {
             operationId = "getPictureById"
     )
     @GetMapping("/{id}")
-    public ResponseEntity<Picture> getById(@PathVariable Integer id) {
-        Picture picture = pictureService.getPictureById(id);
+    public ResponseEntity<GetPictureByIdResponse> getById(@PathVariable Integer id) {
+        GetPictureByIdQuery query = new GetPictureByIdQuery(id);
+        GetPictureByIdResponse picture = getPictureByIdHandler.handle(query);
 
         return new ResponseEntity<>(picture, HttpStatus.OK);
     }

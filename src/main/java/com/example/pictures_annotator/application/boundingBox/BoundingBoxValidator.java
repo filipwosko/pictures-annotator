@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.application.validation;
+package com.example.pictures_annotator.application.boundingBox;
 
 import com.example.pictures_annotator.domain.exception.BoundingBoxOutOfImageException;
 import com.example.pictures_annotator.domain.model.BoundingBox;
@@ -6,7 +6,7 @@ import com.example.pictures_annotator.domain.model.Picture;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DefaultBoundingBoxValidator implements BoundingBoxValidator{
+public class BoundingBoxValidator {
 
     public void validate(BoundingBox boundingBox, Picture picture) {
 
