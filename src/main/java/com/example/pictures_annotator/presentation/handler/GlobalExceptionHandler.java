@@ -17,8 +17,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(BoundingBoxOutOfImageException.class)
-    public ResponseEntity<String> handleBoundingBoxOutOfImage(BoundingBoxOutOfImageException ex) {
+    @ExceptionHandler(PictureNotValidException.class)
+    public ResponseEntity<String> handleBoundingBoxNotFound(PictureNotValidException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
@@ -27,8 +27,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(PictureNotValidException.class)
-    public ResponseEntity<String> handleBoundingBoxNotFound(PictureNotValidException ex) {
+    @ExceptionHandler(BoundingBoxOutOfImageException.class)
+    public ResponseEntity<String> handleBoundingBoxOutOfImage(BoundingBoxOutOfImageException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }
