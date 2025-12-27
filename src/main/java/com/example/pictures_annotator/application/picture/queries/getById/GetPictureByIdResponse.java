@@ -7,7 +7,6 @@ import java.util.List;
 public record GetPictureByIdResponse(
         Integer id,
         byte[] data,
-        String contentType,
         int width,
         int height,
         List<BoundingBox> boundingBoxes

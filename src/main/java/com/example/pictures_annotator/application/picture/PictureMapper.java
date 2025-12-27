@@ -15,7 +15,6 @@ public class PictureMapper {
         picture.setData(command.data());
         picture.setHeight(command.height());
         picture.setWidth(command.width());
-        picture.setContentType(command.contentType());
 
         return picture;
     }
@@ -24,7 +23,6 @@ public class PictureMapper {
         return new GetPictureByIdResponse(
                 picture.getId(),
                 picture.getData(),
-                picture.getContentType(),
                 picture.getWidth(),
                 picture.getHeight(),
                 boxes);
