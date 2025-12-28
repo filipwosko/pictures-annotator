@@ -1,9 +1,9 @@
-package com.example.pictures_annotator.presentation.handler;
+package com.example.pictures_annotator.presentation.handlers;
 
-import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
-import com.example.pictures_annotator.domain.exception.BoundingBoxOutOfImageException;
-import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
-import com.example.pictures_annotator.domain.exception.PictureNotValidException;
+import com.example.pictures_annotator.domain.exceptions.BoundingBoxNotFoundException;
+import com.example.pictures_annotator.domain.exceptions.BoundingBoxOutOfImageException;
+import com.example.pictures_annotator.domain.exceptions.PictureNotFoundException;
+import com.example.pictures_annotator.domain.exceptions.PictureNotValidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -2,8 +2,8 @@ package com.example.pictures_annotator.application.picture.commands.create;
 
 import com.example.pictures_annotator.application.picture.PictureMapper;
 import com.example.pictures_annotator.application.picture.PictureValidator;
-import com.example.pictures_annotator.domain.model.Picture;
-import com.example.pictures_annotator.domain.repository.PictureRepository;
+import com.example.pictures_annotator.domain.models.Picture;
+import com.example.pictures_annotator.domain.repositories.PictureRepository;
 import org.springframework.stereotype.Service;
 
 @Service

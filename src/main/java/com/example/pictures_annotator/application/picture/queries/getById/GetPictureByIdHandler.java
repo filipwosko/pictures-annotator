@@ -1,15 +1,14 @@
 package com.example.pictures_annotator.application.picture.queries.getById;
 
 import com.example.pictures_annotator.application.picture.PictureMapper;
-import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
-import com.example.pictures_annotator.domain.model.BoundingBox;
-import com.example.pictures_annotator.domain.model.Picture;
-import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
-import com.example.pictures_annotator.domain.repository.PictureRepository;
+import com.example.pictures_annotator.domain.exceptions.PictureNotFoundException;
+import com.example.pictures_annotator.domain.models.BoundingBox;
+import com.example.pictures_annotator.domain.models.Picture;
+import com.example.pictures_annotator.domain.repositories.BoundingBoxRepository;
+import com.example.pictures_annotator.domain.repositories.PictureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GetPictureByIdHandler {

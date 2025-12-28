@@ -1,6 +1,6 @@
-package com.example.pictures_annotator.domain.repository;
+package com.example.pictures_annotator.domain.repositories;
 
-import com.example.pictures_annotator.domain.model.BoundingBox;
+import com.example.pictures_annotator.domain.models.BoundingBox;
 
 import java.util.List;
 

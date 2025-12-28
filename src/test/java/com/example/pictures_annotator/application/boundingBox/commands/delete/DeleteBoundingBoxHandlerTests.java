@@ -1,9 +1,9 @@
-package com.example.pictures_annotator.application.boundingBox.delete;
+package com.example.pictures_annotator.application.boundingBox.commands.delete;
 
 import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxCommand;
 import com.example.pictures_annotator.application.boundingBox.commands.delete.DeleteBoundingBoxHandler;
-import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
-import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
+import com.example.pictures_annotator.domain.exceptions.BoundingBoxNotFoundException;
+import com.example.pictures_annotator.domain.repositories.BoundingBoxRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
 package com.example.pictures_annotator.application.picture;
 
-import com.example.pictures_annotator.domain.exception.PictureNotValidException;
-import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.exceptions.PictureNotValidException;
+import com.example.pictures_annotator.domain.models.Picture;
 import org.springframework.stereotype.Component;
 
 @Component

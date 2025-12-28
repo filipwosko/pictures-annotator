@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.domain.exception;
+package com.example.pictures_annotator.domain.exceptions;
 
 public class BoundingBoxNotFoundException extends RuntimeException{
     public BoundingBoxNotFoundException(Integer id) {

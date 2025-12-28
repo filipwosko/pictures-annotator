@@ -1,14 +1,14 @@
-package com.example.pictures_annotator.application.boundingBox.create;
+package com.example.pictures_annotator.application.boundingBox.commands.create;
 
 import com.example.pictures_annotator.application.boundingBox.BoundingBoxMapper;
 import com.example.pictures_annotator.application.boundingBox.BoundingBoxValidator;
 import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxCommand;
 import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxHandler;
-import com.example.pictures_annotator.domain.exception.PictureNotFoundException;
-import com.example.pictures_annotator.domain.model.BoundingBox;
-import com.example.pictures_annotator.domain.model.Picture;
-import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
-import com.example.pictures_annotator.domain.repository.PictureRepository;
+import com.example.pictures_annotator.domain.exceptions.PictureNotFoundException;
+import com.example.pictures_annotator.domain.models.BoundingBox;
+import com.example.pictures_annotator.domain.models.Picture;
+import com.example.pictures_annotator.domain.repositories.BoundingBoxRepository;
+import com.example.pictures_annotator.domain.repositories.PictureRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

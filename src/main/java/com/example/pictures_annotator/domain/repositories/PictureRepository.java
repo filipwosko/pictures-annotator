@@ -1,6 +1,6 @@
-package com.example.pictures_annotator.domain.repository;
+package com.example.pictures_annotator.domain.repositories;
 
-import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.models.Picture;
 
 import java.util.List;
 import java.util.Optional;

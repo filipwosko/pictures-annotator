@@ -1,8 +1,8 @@
 package com.example.pictures_annotator.application.boundingBox;
 
-import com.example.pictures_annotator.domain.exception.BoundingBoxOutOfImageException;
-import com.example.pictures_annotator.domain.model.BoundingBox;
-import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.exceptions.BoundingBoxOutOfImageException;
+import com.example.pictures_annotator.domain.models.BoundingBox;
+import com.example.pictures_annotator.domain.models.Picture;
 import org.springframework.stereotype.Component;
 
 @Component

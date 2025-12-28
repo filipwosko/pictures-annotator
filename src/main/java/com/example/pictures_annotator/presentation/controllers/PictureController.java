@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.presentation.controller;
+package com.example.pictures_annotator.presentation.controllers;
 
 import com.example.pictures_annotator.application.picture.commands.create.CreatePictureCommand;
 import com.example.pictures_annotator.application.picture.commands.create.CreatePictureHandler;
@@ -7,7 +7,7 @@ import com.example.pictures_annotator.application.picture.queries.getAll.GetAllP
 import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdHandler;
 import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdQuery;
 import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdResponse;
-import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.models.Picture;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

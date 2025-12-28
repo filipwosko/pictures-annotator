@@ -2,7 +2,7 @@ package com.example.pictures_annotator.application.boundingBox;
 
 import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxCommand;
 import com.example.pictures_annotator.application.boundingBox.commands.modify.ModifyBoundingBoxCommand;
-import com.example.pictures_annotator.domain.model.BoundingBox;
+import com.example.pictures_annotator.domain.models.BoundingBox;
 import org.springframework.stereotype.Component;
 
 @Component

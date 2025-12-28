@@ -2,8 +2,8 @@ package com.example.pictures_annotator.application.picture;
 
 import com.example.pictures_annotator.application.picture.commands.create.CreatePictureCommand;
 import com.example.pictures_annotator.application.picture.queries.getById.GetPictureByIdResponse;
-import com.example.pictures_annotator.domain.model.BoundingBox;
-import com.example.pictures_annotator.domain.model.Picture;
+import com.example.pictures_annotator.domain.models.BoundingBox;
+import com.example.pictures_annotator.domain.models.Picture;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

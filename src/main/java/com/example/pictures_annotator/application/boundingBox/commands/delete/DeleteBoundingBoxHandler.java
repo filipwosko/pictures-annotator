@@ -1,7 +1,7 @@
 package com.example.pictures_annotator.application.boundingBox.commands.delete;
 
-import com.example.pictures_annotator.domain.exception.BoundingBoxNotFoundException;
-import com.example.pictures_annotator.domain.repository.BoundingBoxRepository;
+import com.example.pictures_annotator.domain.exceptions.BoundingBoxNotFoundException;
+import com.example.pictures_annotator.domain.repositories.BoundingBoxRepository;
 import org.springframework.stereotype.Service;
 
 @Service

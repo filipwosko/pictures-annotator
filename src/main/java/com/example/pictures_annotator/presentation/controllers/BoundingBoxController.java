@@ -1,4 +1,4 @@
-package com.example.pictures_annotator.presentation.controller;
+package com.example.pictures_annotator.presentation.controllers;
 
 import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxCommand;
 import com.example.pictures_annotator.application.boundingBox.commands.create.CreateBoundingBoxHandler;
