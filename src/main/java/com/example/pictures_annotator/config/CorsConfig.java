@@ -13,8 +13,8 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")               // wszystkie endpointy API
-                        .allowedOrigins("http://localhost:8081") // frontend
+                registry.addMapping("/api/**")
+                        .allowedOrigins("http://localhost:8081")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
