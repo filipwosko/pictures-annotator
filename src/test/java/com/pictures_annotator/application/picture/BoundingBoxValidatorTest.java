@@ -1,4 +1,4 @@
 package com.pictures_annotator.application.picture;
 
-public class PictureValidatorTests {
+public class BoundingBoxValidatorTest {
 }
