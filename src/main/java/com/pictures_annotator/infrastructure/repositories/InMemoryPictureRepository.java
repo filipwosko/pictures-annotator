@@ -1,4 +1,4 @@
-package com.pictures_annotator.infrastructure.inmemory;
+package com.pictures_annotator.infrastructure.repositories;
 
 import com.pictures_annotator.domain.models.Picture;
 import com.pictures_annotator.domain.repositories.PictureRepository;
