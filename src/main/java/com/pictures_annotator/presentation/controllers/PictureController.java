@@ -1,18 +1,18 @@
 package com.pictures_annotator.presentation.controllers;
 
-import com.pictures_annotator.application.picture.commands.addBoundingBox.AddBoundingBoxCommand;
-import com.pictures_annotator.application.picture.commands.addBoundingBox.AddBoundingBoxCommandHandler;
-import com.pictures_annotator.application.picture.commands.create.CreateCommand;
-import com.pictures_annotator.application.picture.commands.create.CreateCommandHandler;
-import com.pictures_annotator.application.picture.commands.deleteBoundingBox.DeleteBoundingBoxCommand;
-import com.pictures_annotator.application.picture.commands.deleteBoundingBox.DeleteBoundingBoxCommandHandler;
-import com.pictures_annotator.application.picture.commands.modifyBoundingBox.ModifyBoundingBoxCommand;
-import com.pictures_annotator.application.picture.commands.modifyBoundingBox.ModifyBoundingBoxCommandHandler;
-import com.pictures_annotator.application.picture.queries.getAll.GetAllQuery;
-import com.pictures_annotator.application.picture.queries.getAll.GetAllQueryHandler;
-import com.pictures_annotator.application.picture.queries.getById.GetByIdQueryHandler;
-import com.pictures_annotator.application.picture.queries.getById.GetByIdQuery;
-import com.pictures_annotator.application.picture.queries.dto.PictureDto;
+import com.pictures_annotator.application.commands.addBoundingBox.AddBoundingBoxCommand;
+import com.pictures_annotator.application.commands.addBoundingBox.AddBoundingBoxCommandHandler;
+import com.pictures_annotator.application.commands.createPicture.CreatePictureCommand;
+import com.pictures_annotator.application.commands.createPicture.CreatePictureCommandHandler;
+import com.pictures_annotator.application.commands.deleteBoundingBox.DeleteBoundingBoxCommand;
+import com.pictures_annotator.application.commands.deleteBoundingBox.DeleteBoundingBoxCommandHandler;
+import com.pictures_annotator.application.commands.modifyBoundingBox.ModifyBoundingBoxCommand;
+import com.pictures_annotator.application.commands.modifyBoundingBox.ModifyBoundingBoxCommandHandler;
+import com.pictures_annotator.application.queries.getAll.GetAllPicturesQuery;
+import com.pictures_annotator.application.queries.getAll.GetAllPicturesQueryHandler;
+import com.pictures_annotator.application.queries.getById.GetPictureByIdQueryHandler;
+import com.pictures_annotator.application.queries.getById.GetPictureByIdQuery;
+import com.pictures_annotator.application.queries.dto.PictureDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,18 +23,18 @@ import java.util.List;
 @RequestMapping("/api/pictures")
 public class PictureController {
 
-    private final CreateCommandHandler createPictureHandler;
-    private final GetAllQueryHandler getAllPicturesHandler;
-    private final GetByIdQueryHandler getPictureByIdHandler;
+    private final CreatePictureCommandHandler createPictureHandler;
+    private final GetAllPicturesQueryHandler getAllPicturesHandler;
+    private final GetPictureByIdQueryHandler getPictureByIdHandler;
 
     private final AddBoundingBoxCommandHandler addBoundingBoxCommandHandler;
     private final ModifyBoundingBoxCommandHandler modifyBoundingBoxCommandHandler;
     private final DeleteBoundingBoxCommandHandler deleteBoundingBoxCommandHandler;
 
     public PictureController(
-            CreateCommandHandler createPictureHandler,
-            GetAllQueryHandler getAllPicturesHandler,
-            GetByIdQueryHandler getPictureByIdHandler,
+            CreatePictureCommandHandler createPictureHandler,
+            GetAllPicturesQueryHandler getAllPicturesHandler,
+            GetPictureByIdQueryHandler getPictureByIdHandler,
             AddBoundingBoxCommandHandler addBoundingBoxCommandHandler,
             ModifyBoundingBoxCommandHandler modifyBoundingBoxCommandHandler,
             DeleteBoundingBoxCommandHandler deleteBoundingBoxCommandHandler
@@ -48,20 +48,20 @@ public class PictureController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateCommand command) {
+    public ResponseEntity<Void> create(@RequestBody CreatePictureCommand command) {
         createPictureHandler.handle(command);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<PictureDto>> getAll() {
-        List<PictureDto> pictures = getAllPicturesHandler.handle(new GetAllQuery());
+        List<PictureDto> pictures = getAllPicturesHandler.handle(new GetAllPicturesQuery());
         return new ResponseEntity<>(pictures, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PictureDto> getById(@PathVariable Integer id) {
-        PictureDto picture = getPictureByIdHandler.handle(new GetByIdQuery(id));
+        PictureDto picture = getPictureByIdHandler.handle(new GetPictureByIdQuery(id));
         return new ResponseEntity<>(picture, HttpStatus.OK);
     }
 
