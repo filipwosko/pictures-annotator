@@ -29,7 +29,7 @@ class AddBoundingBoxCommandHandlerTest {
 
     @Test
     void handle_ShouldAddBoundingBox_WhenPictureExists() {
-        // given
+        // Given
         byte[] data = new byte[]{0, 1, 2};
         Picture picture = new Picture(data, 800, 600);
         Integer pictureId = 1;
@@ -37,10 +37,10 @@ class AddBoundingBoxCommandHandlerTest {
 
         when(pictureRepository.findById(pictureId)).thenReturn(Optional.of(picture));
 
-        // when
+        // When
         handler.handle(command);
 
-        // then
+        // Then
         ArgumentCaptor<Picture> pictureCaptor = ArgumentCaptor.forClass(Picture.class);
         verify(pictureRepository).save(pictureCaptor.capture());
         Picture savedPicture = pictureCaptor.getValue();
