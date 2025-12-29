@@ -1,6 +1,6 @@
 package com.pictures_annotator.application.commands.createPicture;
 
-import com.pictures_annotator.application.commands.PictureValidator;
+import com.pictures_annotator.application.commands.validators.PictureValidator;
 import com.pictures_annotator.domain.models.Picture;
 import com.pictures_annotator.domain.repositories.PictureRepository;
 import org.junit.jupiter.api.BeforeEach;

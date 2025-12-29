@@ -1,6 +1,6 @@
 package com.pictures_annotator.application.commands.modifyBoundingBox;
 
-import com.pictures_annotator.application.commands.BoundingBoxValidator;
+import com.pictures_annotator.application.commands.validators.BoundingBoxValidator;
 import com.pictures_annotator.domain.exceptions.PictureNotFoundException;
 import com.pictures_annotator.domain.models.BoundingBox;
 import com.pictures_annotator.domain.models.Picture;

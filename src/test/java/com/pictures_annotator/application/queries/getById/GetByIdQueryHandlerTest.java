@@ -1,6 +1,6 @@
 package com.pictures_annotator.application.queries.getById;
 
-import com.pictures_annotator.application.queries.PictureMapper;
+import com.pictures_annotator.application.queries.mappers.PictureMapper;
 import com.pictures_annotator.application.queries.dto.PictureDto;
 import com.pictures_annotator.domain.exceptions.PictureNotFoundException;
 import com.pictures_annotator.domain.models.Picture;

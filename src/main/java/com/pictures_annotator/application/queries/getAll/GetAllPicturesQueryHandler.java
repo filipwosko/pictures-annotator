@@ -1,6 +1,6 @@
 package com.pictures_annotator.application.queries.getAll;
 
-import com.pictures_annotator.application.queries.PictureMapper;
+import com.pictures_annotator.application.queries.mappers.PictureMapper;
 import com.pictures_annotator.application.queries.dto.PictureDto;
 import com.pictures_annotator.domain.repositories.PictureRepository;
 import org.springframework.stereotype.Service;

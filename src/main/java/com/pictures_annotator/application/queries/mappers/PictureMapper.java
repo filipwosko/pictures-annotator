@@ -1,4 +1,4 @@
-package com.pictures_annotator.application.queries;
+package com.pictures_annotator.application.queries.mappers;
 
 import com.pictures_annotator.application.queries.dto.BoundingBoxDto;
 import com.pictures_annotator.application.queries.dto.PictureDto;
