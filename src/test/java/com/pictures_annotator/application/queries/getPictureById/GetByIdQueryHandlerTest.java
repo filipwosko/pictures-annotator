@@ -1,4 +1,4 @@
-package com.pictures_annotator.application.queries.getById;
+package com.pictures_annotator.application.queries.getPictureById;
 
 import com.pictures_annotator.application.queries.mappers.PictureMapper;
 import com.pictures_annotator.application.queries.dto.PictureDto;
@@ -28,7 +28,7 @@ public class GetByIdQueryHandlerTest {
     }
 
     @Test
-    void handle_givenExistingPicture_shouldReturnPictureDto() {
+    void handle_ShouldReturnPictureDto_WhenPictureExists() {
         // Given
         Picture picture = new Picture(new byte[]{1, 2, 3}, 100, 100);
         picture.setId(1);
@@ -52,7 +52,7 @@ public class GetByIdQueryHandlerTest {
     }
 
     @Test
-    void handle_givenNonExistingPicture_shouldThrowPictureNotFoundException() {
+    void handle_ShouldThrowPictureNotFoundException_WhenPictureNotExists() {
         // Given
         when(pictureRepository.findById(999)).thenReturn(Optional.empty());
 

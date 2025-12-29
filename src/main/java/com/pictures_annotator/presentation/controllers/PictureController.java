@@ -8,10 +8,10 @@ import com.pictures_annotator.application.commands.deleteBoundingBox.DeleteBound
 import com.pictures_annotator.application.commands.deleteBoundingBox.DeleteBoundingBoxCommandHandler;
 import com.pictures_annotator.application.commands.modifyBoundingBox.ModifyBoundingBoxCommand;
 import com.pictures_annotator.application.commands.modifyBoundingBox.ModifyBoundingBoxCommandHandler;
-import com.pictures_annotator.application.queries.getAll.GetAllPicturesQuery;
-import com.pictures_annotator.application.queries.getAll.GetAllPicturesQueryHandler;
-import com.pictures_annotator.application.queries.getById.GetPictureByIdQueryHandler;
-import com.pictures_annotator.application.queries.getById.GetPictureByIdQuery;
+import com.pictures_annotator.application.queries.getAllPictures.GetAllPicturesQuery;
+import com.pictures_annotator.application.queries.getAllPictures.GetAllPicturesQueryHandler;
+import com.pictures_annotator.application.queries.getPictureById.GetPictureByIdQueryHandler;
+import com.pictures_annotator.application.queries.getPictureById.GetPictureByIdQuery;
 import com.pictures_annotator.application.queries.dto.PictureDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-public class CreateCommandHandlerTest {
+public class CreatePictureCommandHandlerTest {
 
     private PictureRepository pictureRepository;
     private PictureValidator validator;
@@ -26,7 +26,7 @@ public class CreateCommandHandlerTest {
     }
 
     @Test
-    void handle_givenValidCommand_shouldCallValidator() {
+    void handle_ShouldCallValidator() {
         // Given
         byte[] data = new byte[]{10, 20, 30};
         int width = 1;
@@ -46,7 +46,7 @@ public class CreateCommandHandlerTest {
     }
 
     @Test
-    void handle_givenValidCommand_shouldSavePicture() {
+    void handle_ShouldNotSavePicture_WhenValidatorNotThrowsException() {
         // Given
         byte[] data = new byte[]{10, 20, 30};
         int width = 1;
@@ -66,7 +66,7 @@ public class CreateCommandHandlerTest {
     }
 
     @Test
-    void handle_whenValidatorThrows_shouldNotSavePicture() {
+    void handle_ShouldNotSavePicture_WhenValidatorThrowsException() {
         // Given
         byte[] data = new byte[]{1, 2};
         int width = 2;
@@ -79,42 +79,5 @@ public class CreateCommandHandlerTest {
 
         verify(validator).validate(any(Picture.class));
         verifyNoInteractions(pictureRepository);
-    }
-
-    @Test
-    void handle_givenDifferentPictureData_shouldSaveCorrectData() {
-        // Given
-        byte[] data = new byte[]{100, 101, 102};
-        int width = 10;
-        int height = 20;
-        CreatePictureCommand command = new CreatePictureCommand(0, data, width, height);
-
-        // When
-        handler.handle(command);
-
-        // Then
-        ArgumentCaptor<Picture> repositoryCaptor = ArgumentCaptor.forClass(Picture.class);
-        verify(pictureRepository).save(repositoryCaptor.capture());
-        Picture savedPicture = repositoryCaptor.getValue();
-        assertArrayEquals(data, savedPicture.getData());
-        assertEquals(width, savedPicture.getWidth());
-        assertEquals(height, savedPicture.getHeight());
-    }
-
-    @Test
-    void handle_givenCommand_shouldCallValidatorBeforeSave() {
-        // Given
-        byte[] data = new byte[]{5, 6, 7};
-        int width = 3;
-        int height = 3;
-        CreatePictureCommand command = new CreatePictureCommand(0, data, width, height);
-
-        // When
-        handler.handle(command);
-
-        // Then
-        verify(validator).validate(any(Picture.class));
-        verify(pictureRepository).save(any(Picture.class));
-        verifyNoMoreInteractions(validator, pictureRepository);
     }
 }

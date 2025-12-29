@@ -58,12 +58,12 @@ class AddBoundingBoxCommandHandlerTest {
 
     @Test
     void handle_ShouldThrowException_WhenPictureNotFound() {
-        // given
+        // Given
         Integer pictureId = 999;
         AddBoundingBoxCommand command = new AddBoundingBoxCommand(pictureId, 10, 20, 100, 50, "label");
         when(pictureRepository.findById(pictureId)).thenReturn(Optional.empty());
 
-        // when & then
+        // When & Then
         assertThrows(PictureNotFoundException.class, () -> handler.handle(command));
         verify(pictureRepository, never()).save(any());
         verify(validator, never()).validate(any(), any());

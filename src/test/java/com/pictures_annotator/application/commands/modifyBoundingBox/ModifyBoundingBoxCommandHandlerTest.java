@@ -28,7 +28,7 @@ public class ModifyBoundingBoxCommandHandlerTest {
     }
 
     @Test
-    void handle_givenExistingPicture_shouldValidateModifyAndSaveBoundingBox() {
+    void handle_ShouldValidateModifyAndSaveBoundingBox() {
         // Given
         Picture picture = new Picture(new byte[]{1, 2, 3}, 100, 100);
         picture.setId(1);
@@ -68,7 +68,7 @@ public class ModifyBoundingBoxCommandHandlerTest {
     }
 
     @Test
-    void handle_givenNonExistingPicture_shouldThrowPictureNotFoundException() {
+    void handle_ShouldThrowPictureNotFoundException_WhenPictureNotExists() {
         // Given
         ModifyBoundingBoxCommand command = new ModifyBoundingBoxCommand(
                 999, 1, 0, 0, 10, 10, "Label"
@@ -83,7 +83,7 @@ public class ModifyBoundingBoxCommandHandlerTest {
     }
 
     @Test
-    void handle_whenValidatorThrows_shouldNotSavePicture() {
+    void handle_ShouldNotSavePicture_WhenValidatorThrows() {
         // Given
         Picture picture = new Picture(new byte[]{1, 2, 3}, 50, 50);
         picture.setId(1);

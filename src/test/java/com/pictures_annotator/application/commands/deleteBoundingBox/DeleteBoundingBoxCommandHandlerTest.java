@@ -25,7 +25,7 @@ public class DeleteBoundingBoxCommandHandlerTest {
     }
 
     @Test
-    void handle_givenExistingPicture_shouldDeleteBoundingBoxAndSave() {
+    void handle_shouldDeleteBoundingBoxAndSave_WhenPictureExists() {
         // Given
         Picture picture = new Picture(new byte[]{1, 2, 3}, 100, 100);
         picture.setId(1);
@@ -47,7 +47,7 @@ public class DeleteBoundingBoxCommandHandlerTest {
     }
 
     @Test
-    void handle_givenNonExistingPicture_shouldThrowPictureNotFoundException() {
+    void handle_ShouldThrowPictureNotFoundException_WhenPictureNotExists() {
         // Given
         DeleteBoundingBoxCommand command = new DeleteBoundingBoxCommand(999, 1);
         when(pictureRepository.findById(999)).thenReturn(Optional.empty());

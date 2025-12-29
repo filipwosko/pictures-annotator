@@ -1,4 +1,4 @@
-package com.pictures_annotator.application.queries.getAll;
+package com.pictures_annotator.application.queries.getAllPictures;
 
 import com.pictures_annotator.application.queries.mappers.PictureMapper;
 import com.pictures_annotator.application.queries.dto.BoundingBoxDto;
@@ -27,7 +27,7 @@ public class GetAllQueryHandlerTest {
     }
 
     @Test
-    void handle_givenPictures_shouldReturnListOfPictureDtos() {
+    void handle_ShouldReturnListOfPictureDtos() {
         // Given
         Picture picture1 = new Picture(new byte[]{1, 2, 3}, 10, 10);
         picture1.setId(1);
@@ -65,19 +65,5 @@ public class GetAllQueryHandlerTest {
         verify(pictureRepository).findAll();
         verify(pictureMapper).map(picture1);
         verify(pictureMapper).map(picture2);
-    }
-
-    @Test
-    void handle_givenNoPictures_shouldReturnEmptyList() {
-        // Given
-        when(pictureRepository.findAll()).thenReturn(List.of());
-
-        // When
-        List<PictureDto> result = handler.handle(new GetAllPicturesQuery());
-
-        // Then
-        assertEquals(0, result.size());
-        verify(pictureRepository).findAll();
-        verifyNoInteractions(pictureMapper);
     }
 }

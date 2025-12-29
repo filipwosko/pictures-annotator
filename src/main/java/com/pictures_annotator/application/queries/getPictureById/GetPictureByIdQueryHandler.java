@@ -1,4 +1,4 @@
-package com.pictures_annotator.application.queries.getById;
+package com.pictures_annotator.application.queries.getPictureById;
 
 import com.pictures_annotator.application.queries.mappers.PictureMapper;
 import com.pictures_annotator.application.queries.dto.PictureDto;

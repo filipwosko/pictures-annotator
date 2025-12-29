@@ -23,7 +23,7 @@ public class PictureTest {
     }
 
     @Test
-    void shouldAddBoundingBoxAndAssignId() {
+    void addBoundingBox_ShouldAddBoundingBoxAndAssignId() {
         // When
         picture.addBoundingBox(box1);
 
@@ -34,7 +34,7 @@ public class PictureTest {
     }
 
     @Test
-    void shouldAssignSequentialIdsWhenAddingMultipleBoundingBoxes() {
+    void addBoundingBox_ShouldAssignSequentialIds_WhenAddingMultipleBoundingBoxes() {
         // When
         picture.addBoundingBox(box1);
         picture.addBoundingBox(box2);
@@ -46,7 +46,7 @@ public class PictureTest {
     }
 
     @Test
-    void shouldModifyExistingBoundingBox() {
+    void modifyBoundingBox_ShouldModifyExistingBoundingBox() {
         // Given
         picture.addBoundingBox(box1);
         BoundingBox updatedBox = new BoundingBox(1, 15, 25, 35, 45, "UpdatedLabel");
@@ -65,7 +65,7 @@ public class PictureTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenModifyingNonexistentBoundingBox() {
+    void modifyBoundingBox_ShouldThrowException_WhenModifyingNonexistentBoundingBox() {
         // Given
         BoundingBox updatedBox = new BoundingBox(999, 0, 0, 10, 10, "Nonexistent");
 
@@ -74,7 +74,7 @@ public class PictureTest {
     }
 
     @Test
-    void shouldDeleteBoundingBoxById() {
+    void deleteBoundingBox_ShouldDeleteBoundingBoxById() {
         // Given
         picture.addBoundingBox(box1);
 
@@ -86,7 +86,7 @@ public class PictureTest {
     }
 
     @Test
-    void deletingNonexistentBoundingBoxShouldDoNothing() {
+    void deleteBoundingBox_ShouldDoNothing_WhenNonexistentBoundingBox() {
         // Given
         picture.addBoundingBox(box1);
 
